@@ -11,3 +11,6 @@ https://www.figma.com/design/ncne7AiwK9Ll9WyGvsTDQ3/Pokemon-Java-Mockups?node-id
 Credits:
 https://github.com/fanzeyi/pokemon.json
 - Includes first 7 generations (809 Pokemons)
+
+Maybe Colorscheme:
+https://www.schemecolor.com/brian-griffin-family-guy-cartoon-colors.php
