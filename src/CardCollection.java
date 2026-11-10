@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 // a group of cards, like a binder
-public class CardCollection implements SearchSort {
+public class CardCollection implements Collection {
     private String name;
     private ArrayList<Card> cards;
     private double totalValue;
