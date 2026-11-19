@@ -1,0 +1,11 @@
+/* themes/dark-theme.css */
+/* This is just colors for now */
+.root {
+    --primary-bg-color: #272727;
+    --secondary-bg-color: #1e1e1e;
+    --tertiary-bg-color: #333333;
+    --selected-button: #252525;
+    --text: #ffffff;
+    --accent-color: #e7cb4d;
+}
+
