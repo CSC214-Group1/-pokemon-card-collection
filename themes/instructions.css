@@ -1,0 +1,19 @@
+/* 
+Themes in javaFX are done using CSS
+This is a copy of dark-theme.css to reference as an example
+
+:root {
+    --primary-bg-color: #272727;
+    --secondary-bg-color: #1e1e1e;
+    --tertiary-bg-color: #333333;
+    --selected-button: #252525;
+    --text: #ffffff;
+    --accent-color: #e7cb4d;
+}
+
+To use colors, call as vars using:
+
+var(one of the colors above);
+
+var(--primary-bg-color);
+*/
