@@ -1,6 +1,8 @@
 /* 
 Themes in javaFX are done using CSS
 
+Info in CSS variables https://www.w3schools.com/css/css3_variables.asp
+
 .root {
     --primary-bg-color: #272727;
     --secondary-bg-color: #1e1e1e;
