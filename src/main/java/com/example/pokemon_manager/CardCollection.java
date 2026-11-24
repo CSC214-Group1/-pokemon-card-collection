@@ -36,7 +36,7 @@ public class CardCollection implements Collection {
                 cards.get(i).setCondition(newCard.getCondition());
                 cards.get(i).setCost(newCard.getCost());
                 cards.get(i).setRarity(newCard.getRarity());
-                cards.get(i).setStat(newCard.getStat());
+                cards.get(i).setStats(newCard.getStats());
                 return; // ends loop once it finds & updates the card
             }
         }

@@ -1,5 +1,6 @@
 package com.example.pokemon_manager;
 import java.util.Date;
+import java.util.HashMap;
 
 // represents one pokémon card
 public class Card {
@@ -13,10 +14,10 @@ public class Card {
     private int id; // immutable
     private String name;
     private String type[];
-    private int stat[]; // HP, ATK, DEF, SP_ATK, SP_DEF, SPD
+    private HashMap<String, Integer> stats;
 
     // Requires this when creating an initial card
-    public Card(String condition, double cost, double rarity, boolean isFavorite, int id, String name, String[] type, int[] stat) {
+    public Card(String condition, double cost, double rarity, boolean isFavorite, int id, String name, String[] type, HashMap<String, Integer> stats) {
         this.condition = condition;
         this.cost = cost;
         this.rarity = rarity;
@@ -25,7 +26,7 @@ public class Card {
         this.id = id;
         this.name = name;
         this.type = type;
-        this.stat = stat;
+        this.stats = stats;
     }
 
     // getters/setters
@@ -44,6 +45,6 @@ public class Card {
     public void setName(String name) { this.name = name; }
     public String[] getType() { return type; }
     public void setType(String[] type) { this.type = type; }
-    public int[] getStat() { return stat; }
-    public void setStat(int[] stat) { this.stat = stat; }
+    public HashMap<String, Integer> getStats() { return stats; }
+    public void setStats(HashMap<String, Integer> stats) { this.stats = stats; }
 }
