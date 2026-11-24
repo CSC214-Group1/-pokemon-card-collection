@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class CardCollection implements Collection {
     private String name;
     private ArrayList<Card> cards = new ArrayList<>();
-    private double totalValue;
+    private double totalValue = 0;
 
     public CardCollection(String name) {
         this.name = name;
@@ -54,7 +54,6 @@ public class CardCollection implements Collection {
 
     // adds up the cost of every card in the collection
     public double getTotalValue() {
-        double totalValue = 0;
         for (int i = 0; i < cards.size(); i++)
             totalValue += cards.get(i).getCost();
 
@@ -67,7 +66,7 @@ public class CardCollection implements Collection {
     // sorts the cards by name, favorites, date, type, rarity, or cost
     public void sort(String sortOption) { }
 
-    // saves the collection as a file so it can be shared
+    // saves the collection as a file, so it can be shared
     public void exportToCsv(String filePath) { }
 }
 
