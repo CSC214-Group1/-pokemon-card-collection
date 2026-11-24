@@ -16,7 +16,7 @@ public class CollectionTest {
         // when updating, it will create a new card, but won't add it to the collection
         Card newCard1 = new Card(
                 "Used", 35, 9, false, card1.getId(), "BulbasaurV2", new String[]{"Grass", "Steel"},
-        new HashMap<>(){{ put("HP", 55); put("ATK", 45); put("DEF", 65); put("SP_ATK", 66); put("SP_DEF", 67); put("SPD", 44); }}
+                new HashMap<>(){{ put("HP", 55); put("ATK", 45); put("DEF", 65); put("SP_ATK", 66); put("SP_DEF", 67); put("SPD", 44); }}
         );
         newCard1.setDateAdded(card1.getDateAdded()); // making sure dates are consistent
         collection1.updateCard(card1, newCard1);
