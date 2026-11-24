@@ -26,3 +26,5 @@ replay_pid*
 # Locals
 .idea/
 -pokemon-card-collection.iml
+target/
+out/
