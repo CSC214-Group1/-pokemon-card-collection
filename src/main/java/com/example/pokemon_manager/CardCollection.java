@@ -1,4 +1,5 @@
 package com.example.pokemon_manager;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 // a group of cards, like a binder
@@ -64,9 +65,49 @@ public class CardCollection implements Collection {
     public ArrayList<Card> search(String text) { return null; }
 
     // sorts the cards by name, favorites, date, type, rarity, or cost
-    public void sort(String sortOption) { }
+    public void sort(String sortOption) {
+        for (int i = 0; i < cards.size() - 1; i++) {
+            for (int j = 0; j < cards.size() - 1 - i; j++) {
+                Card a = cards.get(j);
+                Card b = cards.get(j + 1);
+                boolean swap = false;
+
+                if (sortOption.equals("name")) {
+                    if (a.getName().compareToIgnoreCase(b.getName()) > 0) swap = true;
+                } else if (sortOption.equals("cost")) {
+                    if (a.getCost() < b.getCost()) swap = true;
+                } else if (sortOption.equals("favorites")) {
+                    if (!a.isFavorite() && b.isFavorite()) swap = true;
+                } else if (sortOption.equals("date")) {
+                    if (getDate(a) < getDate(b)) swap = true;
+                } else if (sortOption.equals("type")) {
+                    if (a.getType()[0].compareToIgnoreCase(b.getType()[0]) > 0) swap = true;
+                } else if (sortOption.equals("rarity")) {
+                    if (a.getRarity() < b.getRarity()) swap = true;
+                }
+
+                if (swap) {
+                    cards.set(j, b);
+                    cards.set(j + 1, a);
+                }
+            }
+        }
+    }
+
+    // turns the date text into a number so two dates can be compared
+    // pattern from: https://stackoverflow.com/questions/4713825/how-to-parse-output-of-new-date-tostring
+    // parse example from: https://mkyong.com/java/how-to-convert-string-to-date-java/
+    private long getDate(Card card) {
+        try {
+            SimpleDateFormat format = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
+            return format.parse(card.getDateAdded()).getTime();
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
+    public ArrayList<Card> getCards() { return cards; }
 
     // saves the collection as a file, so it can be shared
     public void exportToCsv(String filePath) { }
 }
-
