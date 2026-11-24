@@ -1,3 +1,4 @@
+package com.example.pokemon_manager;
 import java.util.ArrayList;
 
 // the pre-made list of pokémon names users pick from

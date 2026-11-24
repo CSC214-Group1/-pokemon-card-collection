@@ -1,3 +1,4 @@
+package com.example.pokemon_manager;
 import java.util.ArrayList;
 
 // saves and loads all the app's data

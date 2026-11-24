@@ -28,3 +28,6 @@ replay_pid*
 -pokemon-card-collection.iml
 target/
 out/
+
+# MacOS
+.DS_Store

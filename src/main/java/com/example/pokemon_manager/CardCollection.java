@@ -1,3 +1,4 @@
+package com.example.pokemon_manager;
 import java.util.ArrayList;
 
 // a group of cards, like a binder

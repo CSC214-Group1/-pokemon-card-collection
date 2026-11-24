@@ -1,3 +1,5 @@
+package com.example.pokemon_manager;
+
 public class CollectionTest {
     public static void main(String[] args) {
         // case of a card that would come from pokedex.json & user input
