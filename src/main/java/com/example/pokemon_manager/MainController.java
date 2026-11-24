@@ -3,7 +3,7 @@ package com.example.pokemon_manager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class DashboardPageController {
+public class MainController {
     @FXML
     private Label welcomeText;
 
