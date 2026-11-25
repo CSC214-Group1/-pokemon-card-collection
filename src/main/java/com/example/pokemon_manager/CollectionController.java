@@ -75,44 +75,12 @@ public class CollectionController {
         MainApplication.loadNewScene(event, "settings.fxml");
     }
 
-//    @FXML
-//    protected void onAddCardBtnClick() {
-//        PokemonDatabase database = new PokemonDatabase();
-//        String searchQuery = getUserInput("Add Card", "Search card name:");
-//        String selection = getUserSelection("Selection", "Select", database.searchNames(searchQuery));
-//        // Add the selected to the UI
-//    }
-
     @FXML
-    protected void onAddCardBtnClick(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("addCard.fxml")
-            );
-            Parent dialogRoot = loader.load();
-
-            Stage dialog = new Stage();
-            dialog.setTitle("Add Pokémon Card");
-            dialog.initModality(Modality.APPLICATION_MODAL);
-
-            if (event.getSource() instanceof javafx.scene.Node node
-                    && node.getScene() != null
-                    && node.getScene().getWindow() != null) {
-                var owner = node.getScene().getWindow();
-                dialog.initOwner(owner);
-
-                // Apply the same theme stylesheet(s) as the window that opened this dialog.
-                dialogRoot.getStylesheets().setAll(
-                        node.getScene().getRoot().getStylesheets()
-                );
-            }
-
-            dialog.setScene(new Scene(dialogRoot));
-            dialog.setResizable(false);
-            dialog.showAndWait();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    protected void onAddCardBtnClick() {
+        PokemonDatabase database = new PokemonDatabase();
+        String searchQuery = getUserInput("Add Card", "Search card name:");
+        String selection = getUserSelection("Selection", "Select", database.searchNames(searchQuery));
+        // Add the selected to the UI
     }
 
     @FXML
@@ -123,3 +91,36 @@ public class CollectionController {
         dialog.close();
     }
 }
+
+// TODO: Implement stylized dialogue box & add selection box style
+//    @FXML
+//    protected void onAddCardBtnClick(ActionEvent event) {
+//        try {
+//            FXMLLoader loader = new FXMLLoader(
+//                    getClass().getResource("addCard.fxml")
+//            );
+//            Parent dialogRoot = loader.load();
+//
+//            Stage dialog = new Stage();
+//            dialog.setTitle("Add Pokémon Card");
+//            dialog.initModality(Modality.APPLICATION_MODAL);
+//
+//            if (event.getSource() instanceof javafx.scene.Node node
+//                    && node.getScene() != null
+//                    && node.getScene().getWindow() != null) {
+//                var owner = node.getScene().getWindow();
+//                dialog.initOwner(owner);
+//
+//                // Apply the same theme stylesheet(s) as the window that opened this dialog.
+//                dialogRoot.getStylesheets().setAll(
+//                        node.getScene().getRoot().getStylesheets()
+//                );
+//            }
+//
+//            dialog.setScene(new Scene(dialogRoot));
+//            dialog.setResizable(false);
+//            dialog.showAndWait();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
