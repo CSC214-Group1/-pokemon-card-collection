@@ -8,7 +8,7 @@ import java.io.IOException;
 public class LoginController {
     @FXML
     protected void onSignInBtnClick(ActionEvent event) throws IOException {
-        MainApplication.loadNewScene(event, "collection1.fxml");
+        MainApplication.loadNewScene(event, "collection.fxml");
     }
 
     @FXML

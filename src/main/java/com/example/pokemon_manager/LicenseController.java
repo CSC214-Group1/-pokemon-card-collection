@@ -8,11 +8,11 @@ import java.io.IOException;
 public class LicenseController {
     @FXML
     protected void onPurchaseBtnClick(ActionEvent event) throws IOException {
-        MainApplication.loadNewScene(event, "collection1.fxml");
+        MainApplication.loadNewScene(event, "collection.fxml");
     }
 
     @FXML
     protected void onContinueFreeBtnClick(ActionEvent event) throws IOException {
-        MainApplication.loadNewScene(event, "collection1.fxml");
+        MainApplication.loadNewScene(event, "collection.fxml");
     }
 }

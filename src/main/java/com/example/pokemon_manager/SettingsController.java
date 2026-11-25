@@ -7,8 +7,15 @@ import java.io.IOException;
 
 public class SettingsController {
     @FXML
-    protected void onCollection1BtnClick(ActionEvent event) throws IOException {
-        MainApplication.loadNewScene(event, "collection1.fxml");
+    protected void onSelectCollectionBtnClick(ActionEvent event) throws IOException {
+        MainApplication.loadNewScene(event, "collection.fxml"); // loads initial
+        // prompts to select collection
+    }
+
+    @FXML
+    protected void onAddCollectionBtnClick(ActionEvent event) throws IOException {
+        // Prompts user to set a name for a new collection
+        // Adds collection to User.java
     }
 
     @FXML

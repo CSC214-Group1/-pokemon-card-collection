@@ -18,7 +18,21 @@ import java.io.StringWriter;
 import java.util.Optional;
 
 public class CollectionController {
-    // all collections will use this controller
+    @FXML
+    protected void onSelectCollectionBtnClick(ActionEvent event) throws IOException {
+        // Prompts to select from a list of collection (User.java)
+        // reloads collection.fxml with collection details
+        MainApplication.loadNewScene(event, "collection.fxml");
+    }
+
+    @FXML
+    protected void onAddCollectionBtnClick(ActionEvent event) throws IOException {
+        // Code will be same as in SettingsController (refactor later)
+        // Prompts user to set a name for a new collection
+        // Adds collection to User.java
+    }
+
+
     @FXML
     protected void onSettingsBtnClick(ActionEvent event) throws IOException {
         MainApplication.loadNewScene(event, "settings.fxml");

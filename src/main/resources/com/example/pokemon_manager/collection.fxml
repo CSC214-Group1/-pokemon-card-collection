@@ -37,8 +37,8 @@
 
             <!-- Sidebar Navigation -->
             <VBox alignment="CENTER" spacing="2.0" styleClass="navigation">
-                <Button prefWidth="200" styleClass="nav-item, nav-selected" text="Collection (1)" />
-                <Button prefWidth="200" styleClass="nav-item" text="+ Add Collection" />
+                <Button onAction="#onSelectCollectionBtnClick" prefWidth="200" styleClass="nav-item, nav-selected" text="Select Collection" />
+                <Button onAction="#onAddCollectionBtnClick" prefWidth="200" styleClass="nav-item" text="+ Add Collection" />
                 <Button onAction="#onSettingsBtnClick" prefWidth="200" styleClass="nav-item" text="⚙ Settings" />
             </VBox>
 
