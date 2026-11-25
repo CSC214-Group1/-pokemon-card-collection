@@ -6,102 +6,86 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.VBox?>
 
 <!-- Main Window -->
-<BorderPane prefHeight="1080"
-            prefWidth="1920"
-            styleClass="app"
-            stylesheets="@themes/dark.css"
-            xmlns="http://javafx.com/javafx/26">
+
+<BorderPane prefHeight="1080" prefWidth="1920" styleClass="app" stylesheets="@themes/dark.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pokemon_manager.LicenseController">
 
     <center>
         <VBox alignment="CENTER" spacing="28.0" styleClass="purchase-page">
             <padding>
-                <Insets top="30.0" right="30.0" bottom="24.0" left="30.0" />
+                <Insets bottom="24.0" left="30.0" right="30.0" top="30.0" />
             </padding>
 
             <!-- Page Title -->
-            <Label text="Pokemon Card Collection" styleClass="login-title" />
+            <Label styleClass="login-title" text="Pokemon Card Collection" />
 
             <HBox alignment="CENTER" spacing="20.0">
                 <!-- License & Picture -->
                 <StackPane>
-                    <ImageView fitWidth="250.0"
-                               fitHeight="200.0"
-                               preserveRatio="true"
-                               translateY="310.0"
-                               translateX="215.0"
-                               mouseTransparent="true">
+                    <ImageView fitHeight="200.0" fitWidth="250.0" mouseTransparent="true" preserveRatio="true" translateX="215.0" translateY="310.0">
                         <image>
                             <Image url="@database/pokedex/052.png" />
                         </image>
                     </ImageView>
 
-                    <VBox alignment="TOP_LEFT"
-                          spacing="18.0"
-                          styleClass="purchase-card, benefits-card">
-                        <Label text="One-time Purchase" styleClass="purchase-heading" />
+                    <VBox alignment="TOP_LEFT" spacing="18.0" styleClass="purchase-card, benefits-card">
+                        <Label styleClass="purchase-heading" text="One-time Purchase" />
 
                         <!-- Benefits list -->
                         <VBox spacing="12.0" styleClass="benefits-list">
-                            <Label text="•  Lifetime Updates" styleClass="purchase-text" />
-                            <Label text="•  Infinite Pokemon Collections" styleClass="purchase-text" />
-                            <Label text="•  Access to Technical Support" styleClass="purchase-text" />
+                            <Label styleClass="purchase-text" text="•  Lifetime Updates" />
+                            <Label styleClass="purchase-text" text="•  Infinite Pokemon Collections" />
+                            <Label styleClass="purchase-text" text="•  Access to Technical Support" />
                         </VBox>
                     </VBox>
                 </StackPane>
 
                 <!-- Payment -->
-                <VBox alignment="TOP_LEFT"
-                      spacing="12.0"
-                      styleClass="purchase-card, payment-card">
-                    <Label text="Purchase Premium Access Key"
-                           styleClass="purchase-heading" />
+                <VBox alignment="TOP_LEFT" spacing="12.0" styleClass="purchase-card, payment-card">
+                    <Label styleClass="purchase-heading" text="Purchase Premium Access Key" />
 
                     <!-- Card -->
                     <VBox spacing="4.0">
-                        <Label text="Card Number *" styleClass="login-field-label" />
+                        <Label styleClass="login-field-label" text="Card Number *" />
                         <TextField promptText="Card number" styleClass="login-field" />
                     </VBox>
 
                     <VBox spacing="4.0">
-                        <Label text="Name *" styleClass="login-field-label" />
+                        <Label styleClass="login-field-label" text="Name *" />
                         <TextField promptText="Name on card" styleClass="login-field" />
                     </VBox>
 
                     <HBox spacing="12.0">
                         <VBox spacing="4.0" HBox.hgrow="ALWAYS">
-                            <Label text="Month *" styleClass="login-field-label" />
+                            <Label styleClass="login-field-label" text="Month *" />
                             <TextField promptText="MM" styleClass="login-field" />
                         </VBox>
 
                         <VBox spacing="4.0" HBox.hgrow="ALWAYS">
-                            <Label text="Year *" styleClass="login-field-label" />
+                            <Label styleClass="login-field-label" text="Year *" />
                             <TextField promptText="YY" styleClass="login-field" />
                         </VBox>
 
                         <VBox spacing="4.0" HBox.hgrow="ALWAYS">
-                            <Label text="CVV *" styleClass="login-field-label" />
+                            <Label styleClass="login-field-label" text="CVV *" />
                             <PasswordField promptText="CVV" styleClass="login-field" />
                         </VBox>
                     </HBox>
 
                     <!-- Purchase -->
-                    <Button maxWidth="Infinity"
-                            text="Purchase"
-                            styleClass="login-button" />
+                    <Button maxWidth="Infinity" onAction="#onPurchaseBtnClick" styleClass="login-button" text="Purchase" />
                 </VBox>
             </HBox>
 
             <!-- Use Free -->
-            <Hyperlink text="Continue with free"
-                       styleClass="register-link" />
+            <Hyperlink onAction="#onContinueFreeBtnClick" styleClass="register-link" text="Continue with free" />
         </VBox>
     </center>
 </BorderPane>

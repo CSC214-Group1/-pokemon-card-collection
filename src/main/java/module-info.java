@@ -1,6 +1,7 @@
 module com.example.pokemon_manager {
     requires javafx.controls;
     requires javafx.fxml;
+    requires jdk.compiler;
 
 
     opens com.example.pokemon_manager to javafx.fxml;

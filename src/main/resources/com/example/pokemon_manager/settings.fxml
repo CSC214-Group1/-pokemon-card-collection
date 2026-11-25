@@ -11,11 +11,8 @@
 <?import javafx.scene.layout.VBox?>
 
 <!-- Main Window -->
-<BorderPane prefHeight="1080"
-            prefWidth="1920"
-            styleClass="app"
-            stylesheets="@themes/dark.css"
-            xmlns="http://javafx.com/javafx/26">
+
+<BorderPane prefHeight="1080" prefWidth="1920" styleClass="app" stylesheets="@themes/dark.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pokemon_manager.SettingsController">
 
     <!-- Sidebar -->
     <left>
@@ -25,29 +22,20 @@
             </padding>
 
             <!-- Profile Picture -->
-            <ImageView fitWidth="100.0" fitHeight="76.0" preserveRatio="true" smooth="true">
+            <ImageView fitHeight="76.0" fitWidth="100.0" preserveRatio="true" smooth="true">
                 <image>
-                    <Image url="@database/profile.png"/>
+                    <Image url="@database/profile.png" />
                 </image>
             </ImageView>
             <Label styleClass="profile-name" text="Ash Ketchum" />
 
-            <Region minHeight="100.0" prefHeight="100.0" maxHeight="100.0" />
+            <Region maxHeight="100.0" minHeight="100.0" prefHeight="100.0" />
 
             <!-- Sidebar Navigation -->
             <VBox alignment="CENTER" spacing="2.0" styleClass="navigation">
-                <Button prefWidth="200"
-                        styleClass="nav-item"
-                        text="Collection (1)" />
-                <Button prefWidth="200"
-                        styleClass="nav-item, nav-selected"
-                        text="Collection (2)" />
-                <Button prefWidth="200"
-                        styleClass="nav-item"
-                        text="+ Add Collection" />
-                <Button prefWidth="200"
-                        styleClass="nav-item"
-                        text="⚙ Settings" />
+                <Button onAction="#onCollection1BtnClick" prefWidth="200" styleClass="nav-item" text="Collection (1)" />
+                <Button prefWidth="200" styleClass="nav-item" text="+ Add Collection" />
+                <Button prefWidth="200" styleClass="nav-item, nav-selected" text="⚙ Settings" />
             </VBox>
 
             <Region VBox.vgrow="ALWAYS" />
@@ -55,51 +43,44 @@
     </left>
 
     <center>
-        <VBox alignment="TOP_LEFT"
-              spacing="12.0"
-              styleClass="settings-content">
+        <VBox alignment="TOP_LEFT" spacing="12.0" styleClass="settings-content">
             <padding>
-                <Insets top="37.0" right="20.0" bottom="20.0" left="80.0" />
+                <Insets bottom="20.0" left="80.0" right="20.0" top="37.0" />
             </padding>
 
             <!-- Username Change -->
             <HBox alignment="CENTER" spacing="16.0">
-                <Label text="Username: Ash Ketchum"
-                       styleClass="setting-value"
-                       prefWidth="250.0" />
-                <Button text="Change" styleClass="setting-button" />
+                <Label prefWidth="250.0" styleClass="setting-value" text="Username: Ash Ketchum" />
+                <Button styleClass="setting-button" text="Change" />
             </HBox>
 
             <!-- Password Change -->
             <HBox alignment="CENTER" spacing="16.0">
-                <Label text="Password: ********"
-                       styleClass="setting-value"
-                       prefWidth="250.0" />
-                <Button text="Change" styleClass="setting-button" />
+                <Label prefWidth="250.0" styleClass="setting-value" text="Password: ********" />
+                <Button styleClass="setting-button" text="Change" />
             </HBox>
 
             <!-- Theme Change -->
             <HBox alignment="CENTER" spacing="16.0">
-                <Label text="UI Mode: Dark"
-                       styleClass="setting-value"
-                       prefWidth="250.0" />
-                <Button text="Change" styleClass="setting-button" />
+                <Label prefWidth="250.0" styleClass="setting-value" text="UI Mode: Dark" />
+                <Button styleClass="setting-button" text="Change" />
             </HBox>
 
             <!-- Profile Picture Change -->
             <HBox alignment="CENTER" spacing="16.0">
-                <Label text="Profile Picture:"
-                       styleClass="setting-value"
-                       prefWidth="250.0" />
-                <Button text="Change" styleClass="setting-button" />
+                <Label prefWidth="250.0" styleClass="setting-value" text="Profile Picture:" />
+                <Button styleClass="setting-button" text="Change" />
             </HBox>
+         <HBox alignment="CENTER" layoutX="90.0" layoutY="182.0" spacing="16.0">
+            <children>
+               <Label prefWidth="250.0" styleClass="setting-value" text="Logout" />
+               <Button onAction="#onLogoutBtnClick" styleClass="setting-button" text="Confirm" />
+            </children>
+         </HBox>
 
             <!-- Current Profile Picture -->
             <HBox alignment="CENTER">
-                <ImageView fitWidth="80.0"
-                           fitHeight="80.0"
-                           preserveRatio="true"
-                           smooth="true">
+                <ImageView fitHeight="80.0" fitWidth="80.0" preserveRatio="true" smooth="true">
                     <image>
                         <Image url="@database/profile.png" />
                     </image>
