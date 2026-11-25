@@ -31,7 +31,6 @@ public class CollectionController {
     }
 
     @FXML
-
     protected void onAddCardBtnClick(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(
@@ -46,7 +45,13 @@ public class CollectionController {
             if (event.getSource() instanceof javafx.scene.Node node
                     && node.getScene() != null
                     && node.getScene().getWindow() != null) {
-                dialog.initOwner(node.getScene().getWindow());
+                var owner = node.getScene().getWindow();
+                dialog.initOwner(owner);
+
+                // Apply the same theme stylesheet(s) as the window that opened this dialog.
+                dialogRoot.getStylesheets().setAll(
+                        node.getScene().getRoot().getStylesheets()
+                );
             }
 
             dialog.setScene(new Scene(dialogRoot));
