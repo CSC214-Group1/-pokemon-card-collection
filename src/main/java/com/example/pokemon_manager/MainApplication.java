@@ -22,10 +22,9 @@ public class MainApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader =
-                new FXMLLoader(MainApplication.class.getResource("login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("login.fxml"));
 
-        Scene scene = new Scene(fxmlLoader.load(), 1920, 1080);
+        Scene scene = new Scene(fxmlLoader.load(), stage.getWidth(), stage.getHeight());
         applyTheme(scene);
 
         stage.setTitle("Pokemon Card Collection");
@@ -58,8 +57,7 @@ public class MainApplication extends Application {
     // Method for controllers to change page
     public static void loadNewScene(ActionEvent event, String sceneName)
             throws IOException {
-        FXMLLoader loader =
-                new FXMLLoader(MainApplication.class.getResource(sceneName));
+        FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource(sceneName));
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(loader.load(), stage.getWidth(), stage.getHeight());

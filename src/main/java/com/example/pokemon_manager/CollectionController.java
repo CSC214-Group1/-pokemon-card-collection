@@ -11,6 +11,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,8 +59,13 @@ public class CollectionController {
 
     @FXML
     protected void onDeleteCollectionBtnClick(ActionEvent event) throws IOException {
-        // Will show a selection menu of collections from User.java
-        // When user selects one, it will delete it on User.java's collection
+        List<String> collections = new ArrayList<>();
+        for (int i = 0; i < MainApplication.user.getCollections().size(); i++) {
+            collections.addLast(MainApplication.user.getCollections().get(i).getName());
+        }
+
+        String selection = getUserSelection("Collections", "Select Collection", collections);
+        MainApplication.user.deleteCollection(selection);
     }
 
     @FXML
@@ -83,14 +89,14 @@ public class CollectionController {
         // Add the selected to the UI
     }
 
-    @FXML
-    private void onCancelBtnClick(ActionEvent event) {
-        Stage dialog = (Stage) ((Node) event.getSource())
-                .getScene()
-                .getWindow();
-        dialog.close();
-    }
 }
+
+// TODO: (later use) for stylized dialogue box
+//    @FXML
+//    private void onCancelBtnClick(ActionEvent event) {
+//        Stage dialog = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//        dialog.close();
+//    }
 
 // TODO: Implement stylized dialogue box & add selection box style
 //    @FXML
