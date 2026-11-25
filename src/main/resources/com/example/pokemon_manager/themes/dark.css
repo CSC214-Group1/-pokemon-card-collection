@@ -411,13 +411,14 @@
 .theme-box,
 .theme-box .list-cell,
 .combo-box-popup .list-cell {
-    -fx-font-size: 28px;
+    -fx-font-size: 12px;
 }
 
 #themeChoice {
-    -fx-font-size: 28px;
+    -fx-font-size: 12px;
 }
 
 #themeChoice > .list-cell {
-    -fx-font-size: 28px;
+    -fx-font-size: 24px;
+    -fx-alignment: center;
 }

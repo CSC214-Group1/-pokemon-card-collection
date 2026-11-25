@@ -2,7 +2,13 @@ package com.example.pokemon_manager;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.List;
@@ -69,11 +75,51 @@ public class CollectionController {
         MainApplication.loadNewScene(event, "settings.fxml");
     }
 
+//    @FXML
+//    protected void onAddCardBtnClick() {
+//        PokemonDatabase database = new PokemonDatabase();
+//        String searchQuery = getUserInput("Add Card", "Search card name:");
+//        String selection = getUserSelection("Selection", "Select", database.searchNames(searchQuery));
+//        // Add the selected to the UI
+//    }
+
     @FXML
-    protected void onAddCardBtnClick() {
-        PokemonDatabase database = new PokemonDatabase();
-        String searchQuery = getUserInput("Add Card", "Search card name:");
-        String selection = getUserSelection("Selection", "Select", database.searchNames(searchQuery));
-        // Add the selected to the UI
+    protected void onAddCardBtnClick(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("addCard.fxml")
+            );
+            Parent dialogRoot = loader.load();
+
+            Stage dialog = new Stage();
+            dialog.setTitle("Add Pokémon Card");
+            dialog.initModality(Modality.APPLICATION_MODAL);
+
+            if (event.getSource() instanceof javafx.scene.Node node
+                    && node.getScene() != null
+                    && node.getScene().getWindow() != null) {
+                var owner = node.getScene().getWindow();
+                dialog.initOwner(owner);
+
+                // Apply the same theme stylesheet(s) as the window that opened this dialog.
+                dialogRoot.getStylesheets().setAll(
+                        node.getScene().getRoot().getStylesheets()
+                );
+            }
+
+            dialog.setScene(new Scene(dialogRoot));
+            dialog.setResizable(false);
+            dialog.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void onCancelBtnClick(ActionEvent event) {
+        Stage dialog = (Stage) ((Node) event.getSource())
+                .getScene()
+                .getWindow();
+        dialog.close();
     }
 }

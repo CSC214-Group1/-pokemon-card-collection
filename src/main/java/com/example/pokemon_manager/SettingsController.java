@@ -2,8 +2,11 @@ package com.example.pokemon_manager;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.control.ComboBox;
 
 import java.io.IOException;
+import java.util.Map;
 
 public class SettingsController {
     @FXML
@@ -12,8 +15,38 @@ public class SettingsController {
         // prompts to select collection
     }
 
+
+
     @FXML
     protected void onLogoutBtnClick(ActionEvent event) throws IOException {
         MainApplication.loadNewScene(event, "login.fxml");
+    }
+
+    @FXML
+    private void initialize() {
+        themeChoice.getItems().setAll(themes.keySet());
+        themeChoice.setValue(MainApplication.getSelectedTheme());
+    }
+
+    @FXML
+    private void onThemeChanged(ActionEvent event) {
+        String theme = themeChoice.getValue();
+        String cssPath = themes.get(theme);
+
+        if (cssPath == null) {
+            return;
+        }
+
+        MainApplication.setSelectedTheme(theme);
+
+        var stylesheet = getClass().getResource(cssPath);
+        if (stylesheet == null) {
+            throw new IllegalStateException("Stylesheet not found: " + cssPath);
+        }
+
+        Node source = (Node) event.getSource();
+        source.getScene().getRoot()
+                .getStylesheets()
+                .setAll(stylesheet.toExternalForm());
     }
 }
