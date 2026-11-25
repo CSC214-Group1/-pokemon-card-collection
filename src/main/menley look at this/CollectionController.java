@@ -58,7 +58,7 @@ public class CollectionController {
     }
 
     @FXML
-    private void onCancel(ActionEvent event) {
+    private void onCancelBtnClick(ActionEvent event) {
         Stage dialog = (Stage) ((Node) event.getSource())
                 .getScene()
                 .getWindow();
