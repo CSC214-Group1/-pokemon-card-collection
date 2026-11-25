@@ -28,7 +28,7 @@
 
     <HBox alignment="CENTER_RIGHT" spacing="10.0">
         <Button text="Cancel"
-                onAction="#onCancel"
+                onAction="#onCancelBtnClick"
                 styleClass="dialog-cancel-button" />
         <Button text="Add Card"
                 onAction="#onAddCardBtnClick"
