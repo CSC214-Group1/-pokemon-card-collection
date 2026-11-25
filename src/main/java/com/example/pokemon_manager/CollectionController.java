@@ -7,7 +7,6 @@ import javafx.scene.control.*;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class CollectionController {
     protected String getUserInput(String name, String prompt) {
@@ -45,9 +44,10 @@ public class CollectionController {
 
     @FXML
     protected void onAddCollectionBtnClick(ActionEvent event) throws IOException {
-        // Code will be same as in SettingsController (refactor later)
         // Prompts user to set a name for a new collection
-        // Adds collection to User.java
+        String input = getUserInput("Add Collection", "Enter name:");
+        MainApplication.user.addCollection(new CardCollection(input));
+        // Loads collection
     }
 
     @FXML
