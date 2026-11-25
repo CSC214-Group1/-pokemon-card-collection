@@ -64,9 +64,9 @@
 
 .cents {
     -fx-text-fill: -fx-text-color;
-    -fx-font-size: 14px;
+    -fx-font-size: 34px;
     -fx-font-weight: bold;
-    -fx-translate-y: 18px;
+    -fx-translate-y: 34px;
 }
 
 .collection-chart {
@@ -99,7 +99,7 @@
 
 .currency-symbol {
     -fx-text-fill: -fx-accent-color;
-    -fx-font-size: 64px;
+    -fx-font-size: 140px;
     -fx-font-weight: bold;
 }
 
@@ -396,7 +396,7 @@
 
 .total-value {
     -fx-text-fill: -fx-text-color;
-    -fx-font-size: 120px;
+    -fx-font-size: 140px;
     -fx-font-weight: bold;
 }
 
@@ -408,8 +408,16 @@
     -fx-padding: 4px 10px;
 }
 
-.theme-box {
-    -fx-pref-width: 100px;
-    -fx-pref-height: 32px;
+.theme-box,
+.theme-box .list-cell,
+.combo-box-popup .list-cell {
+    -fx-font-size: 28px;
 }
 
+#themeChoice {
+    -fx-font-size: 28px;
+}
+
+#themeChoice > .list-cell {
+    -fx-font-size: 28px;
+}
