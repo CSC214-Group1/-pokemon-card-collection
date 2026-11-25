@@ -52,13 +52,13 @@
 
             <!-- Username Change -->
             <HBox alignment="CENTER" spacing="16.0">
-                <Label prefWidth="250.0" styleClass="setting-value" text="Username: Ash Ketchum" />
+                <Label prefWidth="250.0" styleClass="setting-value" text="Username:" />
                 <Button styleClass="setting-button" text="Change" />
             </HBox>
 
             <!-- Password Change -->
             <HBox alignment="CENTER" spacing="16.0">
-                <Label prefWidth="250.0" styleClass="setting-value" text="Password: ********" />
+                <Label prefWidth="250.0" styleClass="setting-value" text="Password:" />
                 <Button styleClass="setting-button" text="Change" />
             </HBox>
 
@@ -69,8 +69,8 @@
                        text="UI Mode:" />
                 <ComboBox fx:id="themeChoice"
                           onAction="#onThemeChanged"
-                          prefWidth="100.0"
-                          prefHeight="32.0"
+                          prefWidth="240.0"
+                          prefHeight="70.0"
                           promptText="Choose theme" />
             </HBox>
 
@@ -88,7 +88,7 @@
 
             <!-- Current Profile Picture -->
             <HBox alignment="CENTER">
-                <ImageView fitHeight="80.0" fitWidth="80.0" preserveRatio="true" smooth="true">
+                <ImageView fitHeight="180.0" fitWidth="180.0" preserveRatio="true" smooth="true">
                     <image>
                         <Image url="@database/profile.png" />
                     </image>
