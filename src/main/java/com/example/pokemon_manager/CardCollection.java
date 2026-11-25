@@ -12,6 +12,8 @@ public class CardCollection implements Collection {
         this.name = name;
     }
 
+    public String getName() { return name; }
+
     // adding card to collection
     public void addCard(Card card) {
         cards.addLast(card);
@@ -55,6 +57,7 @@ public class CardCollection implements Collection {
 
     // adds up the cost of every card in the collection
     public double getTotalValue() {
+        totalValue = 0; // reset before adding so it doesn't keep growing
         for (int i = 0; i < cards.size(); i++)
             totalValue += cards.get(i).getCost();
 
