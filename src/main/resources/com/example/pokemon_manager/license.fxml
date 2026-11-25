@@ -6,8 +6,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
@@ -29,11 +27,6 @@
             <HBox alignment="CENTER" spacing="20.0">
                 <!-- License & Picture -->
                 <StackPane>
-                    <ImageView fitHeight="200.0" fitWidth="250.0" mouseTransparent="true" preserveRatio="true" translateX="215.0" translateY="310.0">
-                        <image>
-                            <Image url="@database/pokedex/052.png" />
-                        </image>
-                    </ImageView>
 
                     <VBox alignment="TOP_LEFT" spacing="18.0" styleClass="purchase-card, benefits-card">
                         <Label styleClass="purchase-heading" text="One-time Purchase" />

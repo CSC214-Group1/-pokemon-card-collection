@@ -5,8 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
@@ -23,11 +21,6 @@
             <Label styleClass="login-title" text="Pokemon Card Collection" />
 
             <StackPane>
-                <ImageView fitHeight="200.0" fitWidth="250.0" mouseTransparent="true" opacity="0.9" preserveRatio="true" translateY="300.0">
-                    <image>
-                        <Image url="@database/pokedex/025.png" />
-                    </image>
-                </ImageView>
 
                 <VBox alignment="CENTER_LEFT" spacing="12.0" styleClass="login-card">
                     <Label styleClass="login-heading" text="Register your account" />

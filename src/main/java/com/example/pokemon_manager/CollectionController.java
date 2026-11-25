@@ -2,22 +2,40 @@ package com.example.pokemon_manager;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class CollectionController {
+    protected String getUserInput(String name, String prompt) {
+        TextInputDialog dialog = new TextInputDialog();
+
+        dialog.setTitle(name);
+        dialog.setGraphic(null);
+        dialog.setHeaderText(null);
+        dialog.setContentText(prompt);
+
+        Optional<String> result = dialog.showAndWait();
+
+        return result.orElse(null);
+    }
+
+    protected String getUserSelection(String name, String prompt, List<String> choices) {
+        ChoiceDialog<String> dialog = new ChoiceDialog<>(choices.isEmpty() ? null : choices.get(0), choices);
+
+        dialog.setTitle(name);
+        dialog.setGraphic(null);
+        dialog.setHeaderText(null);
+        dialog.setContentText(prompt);
+
+        Optional<String> result = dialog.showAndWait();
+
+        return result.orElse(null);
+    }
+
     @FXML
     protected void onSelectCollectionBtnClick(ActionEvent event) throws IOException {
         // Prompts to select from a list of collection (User.java)
@@ -32,6 +50,19 @@ public class CollectionController {
         // Adds collection to User.java
     }
 
+    @FXML
+    protected void onDeleteCollectionBtnClick(ActionEvent event) throws IOException {
+        // Will show a selection menu of collections from User.java
+        // When user selects one, it will delete it on User.java's collection
+    }
+
+    @FXML
+    protected void onUpdateCollectionBtnClick(ActionEvent event) throws IOException {
+        // Will show a selection menu of collections from User.java
+        // When user selects one, prompt for a new collection name
+        // Then, it will update on User.java's collection
+    }
+
 
     @FXML
     protected void onSettingsBtnClick(ActionEvent event) throws IOException {
@@ -40,18 +71,9 @@ public class CollectionController {
 
     @FXML
     protected void onAddCardBtnClick() {
-        TextInputDialog dialog = new TextInputDialog();
-
-        dialog.setTitle("Add Card");
-        dialog.setGraphic(null);
-        dialog.setHeaderText(null);
-        dialog.setContentText("Search card name:");
-
-        Optional<String> result = dialog.showAndWait();
-
-        // Will search using search() and add to the pokemonCardContainer HBox
-        result.ifPresent(cardName -> {
-            return;
-        });
+        PokemonDatabase database = new PokemonDatabase();
+        String searchQuery = getUserInput("Add Card", "Search card name:");
+        String selection = getUserSelection("Selection", "Select", database.searchNames(searchQuery));
+        // Add the selected to the UI
     }
 }

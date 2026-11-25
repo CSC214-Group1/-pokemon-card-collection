@@ -38,8 +38,10 @@
             <!-- Sidebar Navigation -->
             <VBox alignment="CENTER" spacing="2.0" styleClass="navigation">
                 <Button onAction="#onSelectCollectionBtnClick" prefWidth="200" styleClass="nav-item, nav-selected" text="Select Collection" />
-                <Button onAction="#onAddCollectionBtnClick" prefWidth="200" styleClass="nav-item" text="+ Add Collection" />
-                <Button onAction="#onSettingsBtnClick" prefWidth="200" styleClass="nav-item" text="⚙ Settings" />
+                <Button onAction="#onAddCollectionBtnClick" prefWidth="200" styleClass="nav-item" text="- Add Collection" />
+            <Button onAction="#onDeleteCollectionBtnClick" prefWidth="200" styleClass="nav-item" text="- Delete Collection" />
+            <Button onAction="#onUpdateCollectionBtnClick" prefWidth="200" styleClass="nav-item" text="- Update Collection" />
+                <Button onAction="#onSettingsBtnClick" prefWidth="200" styleClass="nav-item" text="Settings" />
             </VBox>
 
             <Region VBox.vgrow="ALWAYS" />

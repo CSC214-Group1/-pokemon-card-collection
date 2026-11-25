@@ -13,12 +13,6 @@ public class SettingsController {
     }
 
     @FXML
-    protected void onAddCollectionBtnClick(ActionEvent event) throws IOException {
-        // Prompts user to set a name for a new collection
-        // Adds collection to User.java
-    }
-
-    @FXML
     protected void onLogoutBtnClick(ActionEvent event) throws IOException {
         MainApplication.loadNewScene(event, "login.fxml");
     }
