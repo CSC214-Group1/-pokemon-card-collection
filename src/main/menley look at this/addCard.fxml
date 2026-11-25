@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="14.0"
+      styleClass="add-card-dialog"
+      stylesheets="@themes/dark.css"
+      xmlns="http://javafx.com/javafx/25"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.pokemon_manager.CollectionController">
+    <padding>
+        <Insets top="22.0" right="24.0" bottom="22.0" left="24.0" />
+    </padding>
+
+    <Label text="Add Pokémon Card" styleClass="dialog-title" />
+
+    <VBox spacing="5.0">
+        <Label text="Name" styleClass="dialog-field-label" />
+        <TextField fx:id="nameField"
+                   promptText="e.g. Bulbasaur"
+                   styleClass="dialog-field" />
+    </VBox>
+
+    <HBox alignment="CENTER_RIGHT" spacing="10.0">
+        <Button text="Cancel"
+                onAction="#onCancel"
+                styleClass="dialog-cancel-button" />
+        <Button text="Add Card"
+                onAction="#onAddCardBtnClick"
+                styleClass="dialog-add-button" />
+    </HBox>
+</VBox>
