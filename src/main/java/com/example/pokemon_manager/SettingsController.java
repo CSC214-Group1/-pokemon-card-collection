@@ -15,6 +15,13 @@ public class SettingsController {
         // prompts to select collection
     }
 
+    private ComboBox<String> themeChoice = new ComboBox<>();
+
+    private final Map<String, String> themes = Map.of(
+            "Dark", "themes/dark.css",
+            "Light", "themes/light.css",
+            "Brian", "themes/brian.css"
+    );
 
 
     @FXML
