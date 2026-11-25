@@ -81,11 +81,11 @@
             <!-- Sort/Add -->
             <HBox alignment="CENTER_LEFT" spacing="10.0">
                 <Button styleClass="toolbar-button" text="Sort By [L..]" />
-                <Button styleClass="toolbar-button" text="Add Card" />
+                <Button onAction="#onAddCardBtnClick" styleClass="toolbar-button" text="Add Card" />
             </HBox>
 
             <!-- Cards -->
-            <HBox spacing="12.0">
+            <HBox fx:id="pokemonCardContainer" spacing="12.0">
 
                 <!-- Charizard card -->
                 <VBox spacing="8.0" styleClass="pokemon-card">
