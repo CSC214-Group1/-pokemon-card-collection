@@ -43,7 +43,6 @@ public class CollectionController {
             dialog.setTitle("Add Pokémon Card");
             dialog.initModality(Modality.APPLICATION_MODAL);
 
-            // Make the dialog belong to the current window.
             if (event.getSource() instanceof javafx.scene.Node node
                     && node.getScene() != null
                     && node.getScene().getWindow() != null) {
