@@ -3,20 +3,32 @@ package com.example.pokemon_manager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.TilePane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
 public class CollectionController {
+    @FXML
+    private TilePane pokemonCardContainer;
+
     protected String getUserInput(String name, String prompt) {
         TextInputDialog dialog = new TextInputDialog();
 
@@ -43,11 +55,66 @@ public class CollectionController {
         return result.orElse(null);
     }
 
+    // TODO: Make values inside variable
+    private VBox createPokemonCard() throws FileNotFoundException {
+        VBox card = new VBox(8);
+        card.getStyleClass().add("pokemon-card");
+
+        Label name = new Label("Charizard");
+        name.getStyleClass().add("pokemon-name");
+        VBox.setMargin(name, new Insets(20, 0, 0, 0));
+
+        FileInputStream url = new FileInputStream("src/main/resources/com/example/pokemon_manager/database/pokedex/006.png");
+        ImageView image = new ImageView(new Image(url));
+        image.setFitHeight(76);
+        image.setFitWidth(100);
+        image.setPreserveRatio(true);
+        image.setSmooth(true);
+
+        Label types = new Label("Fire   Flying");
+        types.getStyleClass().add("type-label");
+
+        Label topStats = new Label("HP 78     ATK 84     DEF 78");
+        topStats.getStyleClass().add("stat");
+
+        Label bottomStats = new Label("SP.ATK 100   SP.DEF 109   SPD 85");
+        bottomStats.getStyleClass().add("stat");
+
+        card.getChildren().addAll(name, image, types, topStats, bottomStats);
+
+        return card;
+    }
+
     @FXML
     protected void onSelectCollectionBtnClick(ActionEvent event) throws IOException {
         // Prompts to select from a list of collection (User.java)
+        ArrayList<String> collectionNames = new ArrayList<>();
+        for (int i = 0; i < MainApplication.user.getCollections().size(); i++)
+            collectionNames.addLast(MainApplication.user.getCollections().get(i).getName());
+
+        String result = getUserSelection("Collection List", "Select collection:", collectionNames);
+        CardCollection collection = MainApplication.user.getCollection(result);
+
+        // test case
+        Card card1 = new Card(
+                "Mint", 45, 10, true, 1, "Bulbasaur", new String[]{"Grass", "Poison"},
+                new HashMap<>(){{ put("HP", 45); put("ATK", 49); put("DEF", 49); put("SP_ATK", 65); put("SP_DEF", 65); put("SPD", 45); }}
+        );
+
+        collection.addCard(card1);
+        collection.addCard(card1);
+        collection.addCard(card1);
+        collection.addCard(card1);
+        collection.addCard(card1);
+        collection.toggleCardFavoriteStatus(card1);
+
         // reloads collection.fxml with collection details
-        MainApplication.loadNewScene(event, "collection.fxml");
+        ArrayList<Card> cards = collection.getCards();
+        pokemonCardContainer.getChildren().clear();
+        for (int i = 0; i < cards.size(); i++) { // adding nodes for each card
+            System.out.println(cards.get(i).getName());
+            pokemonCardContainer.getChildren().add(createPokemonCard());
+        }
     }
 
     @FXML
@@ -81,9 +148,6 @@ public class CollectionController {
     protected void onSettingsBtnClick(ActionEvent event) throws IOException {
         MainApplication.loadNewScene(event, "settings.fxml");
     }
-
-    @FXML
-    private TilePane pokemonCardContainer;
 
     @FXML
     protected void onAddCardBtnClick() {

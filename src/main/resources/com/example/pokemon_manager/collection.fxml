@@ -58,8 +58,8 @@
                 <VBox prefWidth="390.0" spacing="-4.0">
                     <HBox alignment="CENTER_LEFT">
                         <Label styleClass="currency-symbol" text="\$" />
-                        <Label styleClass="total-value" text="???" />
-                        <Label styleClass="cents" text=".??" />
+                        <Label styleClass="total-value" text="00" />
+                        <Label styleClass="cents" text=".00" />
                     </HBox>
                     <Label styleClass="total-caption" text="TOTAL COLLECTION VALUE" />
                 </VBox>
@@ -69,143 +69,35 @@
                <HBox.margin>
                   <Insets bottom="2.0" />
                </HBox.margin></Region>
+            <VBox.margin>
+               <Insets bottom="50.0" />
+            </VBox.margin>
             </HBox>
 
             <!-- Sort/Add -->
             <HBox alignment="CENTER_LEFT" spacing="10.0">
-                <Button styleClass="toolbar-button" text="Sort By [L..]" />
+                <Button styleClass="toolbar-button" text="Sort By [...]" />
                 <Button onAction="#onAddCardBtnClick" styleClass="toolbar-button" text="Add Card" />
             </HBox>
          <TilePane fx:id="pokemonCardContainer" hgap="20.0" prefHeight="200.0" prefWidth="200.0" vgap="20.0">
-            <children>
-   
-                   <!-- Charizard card -->
-                   <VBox spacing="8.0" styleClass="pokemon-card">
-                       <HBox alignment="CENTER_RIGHT" spacing="4.0">
-                           <Button styleClass="edit-badge" text="E" />
-                           <Button styleClass="delete-badge" text="D" />
-                       </HBox>
-                       <Label styleClass="pokemon-name" text="Charizard" />
-                       <ImageView fitHeight="76.0" fitWidth="100.0" preserveRatio="true" smooth="true">
-                           <image>
-                               <Image url="@database/pokedex/006.png" />
-                           </image>
-                       </ImageView>
-                       <Label styleClass="type-label" text="Fire   Flying" />
-                       <Label styleClass="stat" text="HP 78     ATK 84     DEF 78" />
-                       <Label styleClass="stat" text="SP.ATK 100   SP.DEF 109   SPD 85" />
-                   </VBox>
-   
-                   <!-- Pikachu card -->
-                   <VBox spacing="8.0" styleClass="pokemon-card">
-                       <HBox alignment="CENTER_RIGHT" spacing="4.0">
-                           <Button styleClass="edit-badge" text="E" />
-                           <Button styleClass="delete-badge" text="D" />
-                       </HBox>
-                       <Label styleClass="pokemon-name" text="Pikachu" />
-                       <ImageView fitHeight="76.0" fitWidth="100.0" preserveRatio="true" smooth="true">
-                           <image>
-                               <Image url="@database/pokedex/025.png" />
-                           </image>
-                       </ImageView>
-                       <Label styleClass="type-label" text="Electric" />
-                       <Label styleClass="stat" text="HP 35     ATK 55     DEF 40" />
-                       <Label styleClass="stat" text="SP.ATK 90    SP.DEF 50    SPD 50" />
-                   </VBox>
-               <VBox spacing="8.0" styleClass="pokemon-card">
-                  <children>
+             <children>
+                 <!-- Default Pikachu card -->
+                 <VBox spacing="8.0" styleClass="pokemon-card">
                      <HBox alignment="CENTER_RIGHT" spacing="4.0">
-                        <children>
-                           <Button styleClass="edit-badge" text="E" />
-                           <Button styleClass="delete-badge" text="D" />
-                        </children>
+                         <Button styleClass="edit-badge" text="N" />
+                         <Button styleClass="delete-badge" text="A" />
                      </HBox>
-                     <Label styleClass="pokemon-name" text="Charizard" />
+                     <Label styleClass="pokemon-name" text="N/A" />
                      <ImageView fitHeight="76.0" fitWidth="100.0" preserveRatio="true" smooth="true">
-                        <image>
-                           <Image url="@database/pokedex/006.png" />
-                        </image>
+                         <image>
+                             <Image url="@database/pokedex/025.png" />
+                         </image>
                      </ImageView>
-                     <Label styleClass="type-label" text="Fire   Flying" />
-                     <Label styleClass="stat" text="HP 78     ATK 84     DEF 78" />
-                     <Label styleClass="stat" text="SP.ATK 100   SP.DEF 109   SPD 85" />
-                  </children>
-               </VBox>
-               <VBox spacing="8.0" styleClass="pokemon-card">
-                  <children>
-                     <HBox alignment="CENTER_RIGHT" spacing="4.0">
-                        <children>
-                           <Button styleClass="edit-badge" text="E" />
-                           <Button styleClass="delete-badge" text="D" />
-                        </children>
-                     </HBox>
-                     <Label styleClass="pokemon-name" text="Charizard" />
-                     <ImageView fitHeight="76.0" fitWidth="100.0" preserveRatio="true" smooth="true">
-                        <image>
-                           <Image url="@database/pokedex/006.png" />
-                        </image>
-                     </ImageView>
-                     <Label styleClass="type-label" text="Fire   Flying" />
-                     <Label styleClass="stat" text="HP 78     ATK 84     DEF 78" />
-                     <Label styleClass="stat" text="SP.ATK 100   SP.DEF 109   SPD 85" />
-                  </children>
-               </VBox>
-               <VBox spacing="8.0" styleClass="pokemon-card">
-                  <children>
-                     <HBox alignment="CENTER_RIGHT" spacing="4.0">
-                        <children>
-                           <Button styleClass="edit-badge" text="E" />
-                           <Button styleClass="delete-badge" text="D" />
-                        </children>
-                     </HBox>
-                     <Label styleClass="pokemon-name" text="Charizard" />
-                     <ImageView fitHeight="76.0" fitWidth="100.0" preserveRatio="true" smooth="true">
-                        <image>
-                           <Image url="@database/pokedex/006.png" />
-                        </image>
-                     </ImageView>
-                     <Label styleClass="type-label" text="Fire   Flying" />
-                     <Label styleClass="stat" text="HP 78     ATK 84     DEF 78" />
-                     <Label styleClass="stat" text="SP.ATK 100   SP.DEF 109   SPD 85" />
-                  </children>
-               </VBox>
-               <VBox spacing="8.0" styleClass="pokemon-card">
-                  <children>
-                     <HBox alignment="CENTER_RIGHT" spacing="4.0">
-                        <children>
-                           <Button styleClass="edit-badge" text="E" />
-                           <Button styleClass="delete-badge" text="D" />
-                        </children>
-                     </HBox>
-                     <Label styleClass="pokemon-name" text="Charizard" />
-                     <ImageView fitHeight="76.0" fitWidth="100.0" preserveRatio="true" smooth="true">
-                        <image>
-                           <Image url="@database/pokedex/006.png" />
-                        </image>
-                     </ImageView>
-                     <Label styleClass="type-label" text="Fire   Flying" />
-                     <Label styleClass="stat" text="HP 78     ATK 84     DEF 78" />
-                     <Label styleClass="stat" text="SP.ATK 100   SP.DEF 109   SPD 85" />
-                  </children>
-               </VBox>
-   
-                   <!-- Greninja card -->
-                   <VBox spacing="8.0" styleClass="pokemon-card">
-                       <HBox alignment="CENTER_RIGHT" spacing="4.0">
-                           <Button styleClass="edit-badge" text="E" />
-                           <Button styleClass="delete-badge" text="D" />
-                       </HBox>
-                       <Label styleClass="pokemon-name" text="Greninja" />
-                       <ImageView fitHeight="76.0" fitWidth="100.0" preserveRatio="true" smooth="true">
-                           <image>
-                               <Image url="@database/pokedex/658.png" />
-                           </image>
-                       </ImageView>
-                       <Label styleClass="type-label" text="Water   Dark" />
-                       <Label styleClass="stat" text="HP 72     ATK 95     DEF 67" />
-                       <Label styleClass="stat" text="SP.ATK 122   SP.DEF 103   SPD 71" />
-                   </VBox>
-            </children>
+                     <Label styleClass="type-label" text="N/A" />
+                     <Label styleClass="stat" text="N/A     N/A     N/A" />
+                     <Label styleClass="stat" text="N/A    N/A    N/A" />
+                 </VBox>
+             </children>
          </TilePane>
         </VBox>
     </center>

@@ -1,5 +1,6 @@
 package com.example.pokemon_manager;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 // a user's account and their collections
 public class User {

@@ -21,6 +21,7 @@ public class PokemonDatabase {
             if (line.contains("\"english\"")) {
                 String name = line.split("\"")[3]; 
                 pokemonNames.add(name);
+                // turn to hashmap and add corres IDs
             }
         }
         scanner.close();
