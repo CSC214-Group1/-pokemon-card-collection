@@ -42,6 +42,61 @@ public class CollectionController {
         return result.orElse(null);
     }
 
+    protected Card getCardInput(String title, String pokemonName) {
+        Dialog<Void> dialog = new Dialog<>();
+        DialogPane pane = dialog.getDialogPane();
+
+        VBox box = new VBox(5);
+
+        // condition, cost, rarity, {false}, {1}, types, HP, ATK, DEF, SP_ATK, SP_DEF, SPD
+        TextField condition = new TextField();
+        Label conditionLabel = new Label("Condition");
+        TextField cost = new TextField();
+        Label costLabel = new Label("Cost ($)");
+        TextField rarity = new TextField();
+        Label rarityLabel = new Label("Rarity (value)");
+        TextField types = new TextField();
+        Label typesLabel = new Label("Types");
+        TextField HP = new TextField();
+        Label HP_Label = new Label("HP");
+        TextField ATK = new TextField();
+        Label ATK_Label = new Label("ATK");
+        TextField DEF = new TextField();
+        Label DEF_Label = new Label("DEF");
+        TextField SP_ATK = new TextField();
+        Label SP_ATK_Label = new Label("SP ATK");
+        TextField SP_DEF = new TextField();
+        Label SP_DEF_Label = new Label("SP DEF");
+        TextField SPD = new TextField();
+        Label SPD_Label = new Label("SPD");
+
+        box.getChildren().addAll(
+                conditionLabel, condition, costLabel, cost, rarityLabel,
+                rarity, typesLabel, types, HP_Label, HP, ATK_Label, ATK,
+                DEF_Label, DEF, SP_ATK_Label , SP_ATK, SP_DEF_Label, SP_DEF,
+                SPD_Label, SPD
+        );
+
+        dialog.setTitle(title);
+        pane.setContent(box);
+        pane.getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+        dialog.showAndWait();
+
+        return new Card(
+                condition.getText(), Integer.parseInt(cost.getText()), Double.parseDouble(rarity.getText()),
+                false, 1, pokemonName, new String[]{types.getText()},
+                new HashMap<>(){{
+                    put("HP", Integer.parseInt(HP.getText()));
+                    put("ATK", Integer.parseInt(ATK.getText()));
+                    put("DEF", Integer.parseInt(DEF.getText()));
+                    put("SP_ATK", Integer.parseInt(SP_ATK.getText()));
+                    put("SP_DEF", Integer.parseInt(SP_DEF.getText()));
+                    put("SPD", Integer.parseInt(SPD.getText()));
+                }}
+        );
+    }
+
     protected String getUserSelection(String name, String prompt, List<String> choices) {
         ChoiceDialog<String> dialog = new ChoiceDialog<>(choices.isEmpty() ? null : choices.get(0), choices);
 
@@ -56,11 +111,11 @@ public class CollectionController {
     }
 
     // TODO: Make values inside variable
-    private VBox displayCard() throws FileNotFoundException {
+    private VBox displayCard(String pokemonName, String[] pokeTypes, HashMap<String, Integer> pokeStats) throws FileNotFoundException {
         VBox card = new VBox(8);
         card.getStyleClass().add("pokemon-card");
 
-        Label name = new Label("Charizard");
+        Label name = new Label(pokemonName);
         name.getStyleClass().add("pokemon-name");
         VBox.setMargin(name, new Insets(20, 0, 0, 0));
 
@@ -71,13 +126,25 @@ public class CollectionController {
         image.setPreserveRatio(true);
         image.setSmooth(true);
 
-        Label types = new Label("Fire   Flying");
+        StringBuilder typeText = new StringBuilder();
+        for (int i = 0; i < pokeTypes.length; i++) {
+            typeText.append(pokeTypes[i]).append("   ");
+        }
+        Label types = new Label(typeText.toString());
         types.getStyleClass().add("type-label");
 
-        Label topStats = new Label("HP 78     ATK 84     DEF 78");
+        Label topStats = new Label(
+                "HP " + pokeStats.get("HP").toString() + "   " +
+                "ATK " + pokeStats.get("ATK").toString() + "   " +
+                "DEF " + pokeStats.get("DEF").toString() + "   "
+        );
         topStats.getStyleClass().add("stat");
 
-        Label bottomStats = new Label("SP.ATK 100   SP.DEF 109   SPD 85");
+        Label bottomStats = new Label(
+                "SP ATK " + pokeStats.get("SP_ATK").toString() + "   " +
+                        "SP DEF " + pokeStats.get("SP_DEF").toString() + "   " +
+                        "SPD " + pokeStats.get("SPD").toString() + "   "
+        );
         bottomStats.getStyleClass().add("stat");
 
         card.getChildren().addAll(name, image, types, topStats, bottomStats);
@@ -88,19 +155,16 @@ public class CollectionController {
     @FXML
     protected void onSelectCollectionBtnClick(ActionEvent event) throws IOException {
         // Prompts to select from a list of collection (User.java)
-        ArrayList<String> collectionNames = new ArrayList<>();
-        for (int i = 0; i < MainApplication.user.getCollections().size(); i++)
-            collectionNames.addLast(MainApplication.user.getCollections().get(i).getName());
-
-        String result = getUserSelection("Collection List", "Select collection:", collectionNames);
+        String result = getUserSelection("Collection List", "Select collection:", MainApplication.user.getCollectionNames());
         CardCollection collection = MainApplication.user.getCollection(result);
 
         // reloads collection.fxml with collection details
         pokemonCardContainer.getChildren().clear();
         ArrayList<Card> cards = collection.getCards();
         for (int i = 0; i < cards.size(); i++) { // adding nodes for each card
-            System.out.println(cards.get(i).getName());
-            pokemonCardContainer.getChildren().add(displayCard());
+            pokemonCardContainer.getChildren().add(displayCard(
+                    cards.get(i).getName(), cards.get(i).getType(), cards.get(i).getStats()
+            ));
         }
     }
 
@@ -137,14 +201,22 @@ public class CollectionController {
     }
 
     @FXML
-    protected void onAddCardBtnClick() {
+    protected void onAddCardBtnClick() throws IOException {
         PokemonDatabase database = new PokemonDatabase();
         String searchQuery = getUserInput("Add Card", "Search card name:");
         String selection = getUserSelection("Selection", "Select", database.searchNames(searchQuery));
-        // find selected card details like stats, types, and id
-        // create new Card()
-        // add card to database
-        // show all database cards on UI (use pokemonCardContainer)
+        String collectionName = getUserSelection("Select Collection", "Select a collection", MainApplication.user.getCollectionNames());
+        MainApplication.user.getCollection(collectionName).addCard(getCardInput("Add Card", selection));
+
+        // reloads collection.fxml with newly added card in collection
+        CardCollection collection = MainApplication.user.getCollection(collectionName);
+        pokemonCardContainer.getChildren().clear();
+        ArrayList<Card> cards = collection.getCards();
+        for (int i = 0; i < cards.size(); i++) { // adding nodes for each card
+            pokemonCardContainer.getChildren().add(displayCard(
+                    cards.get(i).getName(), cards.get(i).getType(), cards.get(i).getStats()
+            ));
+        }
     }
 
 }

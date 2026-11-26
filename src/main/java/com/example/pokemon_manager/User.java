@@ -1,6 +1,7 @@
 package com.example.pokemon_manager;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 // a user's account and their collections
 public class User {
@@ -49,6 +50,16 @@ public class User {
             }
         }
         return null;
+    }
+
+    // returns list of card collection names
+    public List<String> getCollectionNames() {
+        List<String> names = new ArrayList<>();
+        for (int i = 0; i < collections.size(); i++) {
+            names.addLast(collections.get(i).getName());
+        }
+
+        return names;
     }
 
     // getters/setters
