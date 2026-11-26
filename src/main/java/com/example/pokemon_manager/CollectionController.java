@@ -2,20 +2,12 @@ package com.example.pokemon_manager;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -249,43 +241,3 @@ public class CollectionController {
 
     }
 }
-
-// TODO: (later use) for stylized dialogue box
-//    @FXML
-//    private void onCancelBtnClick(ActionEvent event) {
-//        Stage dialog = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        dialog.close();
-//    }
-
-// TODO: Implement stylized dialogue box & add selection box style
-//    @FXML
-//    protected void onAddCardBtnClick(ActionEvent event) {
-//        try {
-//            FXMLLoader loader = new FXMLLoader(
-//                    getClass().getResource("addCard.fxml")
-//            );
-//            Parent dialogRoot = loader.load();
-//
-//            Stage dialog = new Stage();
-//            dialog.setTitle("Add Pokémon Card");
-//            dialog.initModality(Modality.APPLICATION_MODAL);
-//
-//            if (event.getSource() instanceof javafx.scene.Node node
-//                    && node.getScene() != null
-//                    && node.getScene().getWindow() != null) {
-//                var owner = node.getScene().getWindow();
-//                dialog.initOwner(owner);
-//
-//                // Apply the same theme stylesheet(s) as the window that opened this dialog.
-//                dialogRoot.getStylesheets().setAll(
-//                        node.getScene().getRoot().getStylesheets()
-//                );
-//            }
-//
-//            dialog.setScene(new Scene(dialogRoot));
-//            dialog.setResizable(false);
-//            dialog.showAndWait();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
