@@ -29,6 +29,9 @@ public class CollectionController {
     @FXML
     private TilePane pokemonCardContainer;
 
+    @FXML
+    private Button selectCollectionBtn;
+
     protected String getUserInput(String name, String prompt) {
         TextInputDialog dialog = new TextInputDialog();
 
@@ -153,10 +156,19 @@ public class CollectionController {
     }
 
     @FXML
+    protected void initialize() {
+        // if user has selected a collection, the button will show this
+        if (MainApplication.user.isHasSelectedCollection())
+            selectCollectionBtn.setText(MainApplication.user.getCurrentCollection() + " *");
+    }
+
+    @FXML
     protected void onSelectCollectionBtnClick(ActionEvent event) throws IOException {
         // Prompts to select from a list of collection (User.java)
         String result = getUserSelection("Collection List", "Select collection:", MainApplication.user.getCollectionNames());
+        MainApplication.user.setCurrentCollection(result); // setting currentCollection
         CardCollection collection = MainApplication.user.getCollection(result);
+        MainApplication.user.setHasSelectedCollection(true);
 
         // reloads collection.fxml with collection details
         pokemonCardContainer.getChildren().clear();
@@ -167,8 +179,8 @@ public class CollectionController {
             ));
         }
 
-        // Changes button name to current collection
-            // will need to first modify constructor for User.java
+        // Changes button text to reflect current selection
+        selectCollectionBtn.setText(MainApplication.user.getCurrentCollection() + " *");
     }
 
     @FXML

@@ -10,6 +10,8 @@ public class User {
     private String bio;
     private String profilePicturePath;
     private ArrayList<CardCollection> collections = new ArrayList<>();
+    private String currentCollection;
+    private boolean hasSelectedCollection;
 
     // every new user starts with one empty collection
     public User(String username, String password) {
@@ -17,16 +19,15 @@ public class User {
         this.password = password;
         this.bio = "";
         this.profilePicturePath = "";
+        this.hasSelectedCollection = false;
 
         // TODO: persistent saving
         // If a userCollection.csv file exist and is not empty,
             // initialize the collections and cards using it
 
         // else, this will remain the default
-        collections.add(new CardCollection("Collection 1"));
-        // set a currentCollectionName value, so it does not keep prompting
-            // user for each update/add/delete on CollectionController.java
-
+        this.currentCollection = "Collection 1"; // initial collection
+        collections.add(new CardCollection(currentCollection));
     }
 
     // returns true if the password is correct
@@ -82,4 +83,8 @@ public class User {
     public String getProfilePicturePath() { return profilePicturePath; }
     public void setProfilePicturePath(String profilePicturePath) { this.profilePicturePath = profilePicturePath; }
     public ArrayList<CardCollection> getCollections() { return collections; }
+    public String getCurrentCollection() { return this.currentCollection; }
+    public void setCurrentCollection(String currentCollection) { this.currentCollection = currentCollection; }
+    public boolean isHasSelectedCollection() { return hasSelectedCollection; }
+    public void setHasSelectedCollection(boolean hasSelectedCollection) { this.hasSelectedCollection = hasSelectedCollection; }
 }
