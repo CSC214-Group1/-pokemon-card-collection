@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.TilePane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -82,11 +83,17 @@ public class CollectionController {
     }
 
     @FXML
+    private TilePane pokemonCardContainer;
+
+    @FXML
     protected void onAddCardBtnClick() {
         PokemonDatabase database = new PokemonDatabase();
         String searchQuery = getUserInput("Add Card", "Search card name:");
         String selection = getUserSelection("Selection", "Select", database.searchNames(searchQuery));
-        // Add the selected to the UI
+        // find selected card details like stats, types, and id
+        // create new Card()
+        // add card to database
+        // show all database cards on UI (use pokemonCardContainer)
     }
 
 }
