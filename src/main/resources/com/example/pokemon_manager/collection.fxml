@@ -76,7 +76,7 @@
 
             <!-- Sort/Add -->
             <HBox alignment="CENTER_LEFT" spacing="10.0">
-                <Button styleClass="toolbar-button" text="Sort By [...]" />
+                <Button onAction="#onSortCardBtnClick" styleClass="toolbar-button" text="Sort By [...]" />
                 <Button onAction="#onAddCardBtnClick" styleClass="toolbar-button" text="Add Card" />
             <Button onAction="#onDeleteCardBtnClick" styleClass="toolbar-button" text="Delete Card" />
             <Button onAction="#onUpdateCardBtnClick" styleClass="toolbar-button" text="Update Card" />

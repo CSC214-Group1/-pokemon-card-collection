@@ -110,7 +110,7 @@ public class CollectionController {
         return result.orElse(null);
     }
 
-    // TODO: Make values inside variable
+    // TODO: Change image file, so it reflects ID of selected pokemon
     private VBox displayCard(String pokemonName, String[] pokeTypes, HashMap<String, Integer> pokeStats) throws FileNotFoundException {
         VBox card = new VBox(8);
         card.getStyleClass().add("pokemon-card");
@@ -166,6 +166,9 @@ public class CollectionController {
                     cards.get(i).getName(), cards.get(i).getType(), cards.get(i).getStats()
             ));
         }
+
+        // Changes button name to current collection
+            // will need to first modify constructor for User.java
     }
 
     @FXML
@@ -198,6 +201,11 @@ public class CollectionController {
     @FXML
     protected void onSettingsBtnClick(ActionEvent event) throws IOException {
         MainApplication.loadNewScene(event, "settings.fxml");
+    }
+
+    @FXML
+    protected void onSortCardBtnClick() {
+        // use sort() in cardCollection.java
     }
 
     @FXML
