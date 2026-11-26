@@ -56,7 +56,7 @@ public class CollectionController {
     }
 
     // TODO: Make values inside variable
-    private VBox createPokemonCard() throws FileNotFoundException {
+    private VBox displayCard() throws FileNotFoundException {
         VBox card = new VBox(8);
         card.getStyleClass().add("pokemon-card");
 
@@ -95,25 +95,12 @@ public class CollectionController {
         String result = getUserSelection("Collection List", "Select collection:", collectionNames);
         CardCollection collection = MainApplication.user.getCollection(result);
 
-        // test case
-        Card card1 = new Card(
-                "Mint", 45, 10, true, 1, "Bulbasaur", new String[]{"Grass", "Poison"},
-                new HashMap<>(){{ put("HP", 45); put("ATK", 49); put("DEF", 49); put("SP_ATK", 65); put("SP_DEF", 65); put("SPD", 45); }}
-        );
-
-        collection.addCard(card1);
-        collection.addCard(card1);
-        collection.addCard(card1);
-        collection.addCard(card1);
-        collection.addCard(card1);
-        collection.toggleCardFavoriteStatus(card1);
-
         // reloads collection.fxml with collection details
-        ArrayList<Card> cards = collection.getCards();
         pokemonCardContainer.getChildren().clear();
+        ArrayList<Card> cards = collection.getCards();
         for (int i = 0; i < cards.size(); i++) { // adding nodes for each card
             System.out.println(cards.get(i).getName());
-            pokemonCardContainer.getChildren().add(createPokemonCard());
+            pokemonCardContainer.getChildren().add(displayCard());
         }
     }
 
