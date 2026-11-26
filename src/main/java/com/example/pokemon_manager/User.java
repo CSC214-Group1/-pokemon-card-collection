@@ -17,9 +17,16 @@ public class User {
         this.password = password;
         this.bio = "";
         this.profilePicturePath = "";
+
+        // TODO: persistent saving
+        // If a userCollection.csv file exist and is not empty,
+            // initialize the collections and cards using it
+
+        // else, this will remain the default
         collections.add(new CardCollection("Collection 1"));
         // set a currentCollectionName value, so it does not keep prompting
             // user for each update/add/delete on CollectionController.java
+
     }
 
     // returns true if the password is correct
@@ -62,6 +69,10 @@ public class User {
         }
 
         return names;
+    }
+
+    public void saveCollectionData() {
+        // save to userCollectionData.csv
     }
 
     // getters/setters
