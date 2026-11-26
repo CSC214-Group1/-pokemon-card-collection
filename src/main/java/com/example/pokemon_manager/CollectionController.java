@@ -219,6 +219,15 @@ public class CollectionController {
         }
     }
 
+    @FXML
+    protected void onDeleteCardBtnClick() {
+
+    }
+
+    @FXML
+    protected void onUpdateCardBtnClick() {
+
+    }
 }
 
 // TODO: (later use) for stylized dialogue box

@@ -78,6 +78,8 @@
             <HBox alignment="CENTER_LEFT" spacing="10.0">
                 <Button styleClass="toolbar-button" text="Sort By [...]" />
                 <Button onAction="#onAddCardBtnClick" styleClass="toolbar-button" text="Add Card" />
+            <Button onAction="#onDeleteCardBtnClick" styleClass="toolbar-button" text="Delete Card" />
+            <Button onAction="#onUpdateCardBtnClick" styleClass="toolbar-button" text="Update Card" />
             </HBox>
          <TilePane fx:id="pokemonCardContainer" hgap="20.0" prefHeight="200.0" prefWidth="200.0" vgap="20.0">
              <children>

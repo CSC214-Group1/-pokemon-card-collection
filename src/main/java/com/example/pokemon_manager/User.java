@@ -18,6 +18,8 @@ public class User {
         this.bio = "";
         this.profilePicturePath = "";
         collections.add(new CardCollection("Collection 1"));
+        // set a currentCollectionName value, so it does not keep prompting
+            // user for each update/add/delete on CollectionController.java
     }
 
     // returns true if the password is correct
