@@ -11,8 +11,9 @@ import java.util.Map;
 public class SettingsController {
     @FXML
     protected void onSelectCollectionBtnClick(ActionEvent event) throws IOException {
-        MainApplication.loadNewScene(event, "collection.fxml"); // loads initial
         // prompts to select collection
+        MainApplication.loadNewScene(event, "collection.fxml"); // loads initial
+        // Changes MainApplication.user's currentCollection to reflect selection
     }
 
     private ComboBox<String> themeChoice = new ComboBox<>();
